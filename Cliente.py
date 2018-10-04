@@ -6,7 +6,6 @@ import sys
 
 sockets = {}
 
-
 # lee los elementos del json
 def parse_input():
     f = open('data.json')
@@ -18,7 +17,16 @@ def parse_input():
         sock.connect((s["dirección"], s["puerto"]))
         sockets[s["nombre"]] = sock
 
+def parse_json(file):
+    f = open(file)
+    data = json.load(f)
 
+    for s in data:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((s["dirección"], s["puerto"]))
+        sockets[s["nombre"]] = sock
+
+##funciones para procesar los comandos de consola
 def receive_command(comando):
     c = comando.split(' ')
     com = c[0]
@@ -40,14 +48,13 @@ def wait_for_answer():
     pass
 
 
+##MAIN EMPIEZA AQUI
 
-# armamos el socket
-parse_input()
-# lo conectamos al puerto acordado
+if len(sys.argv)==2:
+    parse_json(sys.argv[1])
 
-# mandamos un mensajito
-print("mandamos cositas...")
-receive_command('ls server1')
-
-
-print("enviado")
+else:
+    for i in range(1,len(sys.argv),3):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((sys.argv[i+1], sys.argv[i+2]))
+        sockets[sys.argv[i]] = sock
