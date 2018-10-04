@@ -6,15 +6,24 @@ import sys
 
 sockets = {}
 
-def parse_input():
-
-    f=open('data.json')
+def parse_json(file):
+    f = open(file)
     data = json.load(f)
 
     for s in data:
-        sock=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((s["dirección"], s["puerto"]))
-        sockets[s["nombre"]]=sock
+        sockets[s["nombre"]] = sock
+
+
+if len(sys.argv)==2:
+    parse_json(sys.argv[1])
+
+else:
+    for i in range(1,len(sys.argv),3):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((sys.argv[i+1], sys.argv[i+2]))
+        sockets[sys.argv[i]] = sock
 
 
 # armamos el socket
