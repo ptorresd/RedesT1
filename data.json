@@ -1,0 +1,13 @@
+[
+	{
+		"nombre": "server1",
+		"dirección": "localhost",
+		"puerto": "8086"
+	},
+	{
+		"nombre": "server2",
+		"dirección": "localhost",
+		"puerto": "1819"
+	}
+]
+
