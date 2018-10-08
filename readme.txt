@@ -39,3 +39,5 @@ server1 nombre_servidor_cualquiera server5
 
 exit
 server3 server4
+
+Se adjunta una ejecución en ejemplo.txt

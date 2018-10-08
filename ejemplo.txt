@@ -1,0 +1,53 @@
+sven@sven-X456UQ:~/Desktop/Redes - CC4303/tarea1/redest1$ python3 Cliente.py data2.json
+conectando a: server1
+conectado
+esperandorespuesta
+conectando a: server2
+conectado
+esperandorespuesta
+conectando a: server3
+conectado
+respuesta de server1: Welcome to CC4303 Spring 18
+Current date #2018-10-08 19:35:14.312263
+
+* Documentation: command 'help'
+user@CC4303 ~ $
+esperandorespuesta
+respuesta de server2: Welcome to CC4303 Spring 18
+Current date #2018-10-08 19:35:14.312525
+
+* Documentation: command 'help'
+user@CC4303 ~ $
+respuesta de server3: Welcome to CC4303 Spring 18
+Current date #2018-10-08 19:35:14.312739
+
+* Documentation: command 'help'
+user@CC4303 ~ $
+echo hola
+ingrese destinatarios: all
+enviando comando a server1
+esperandorespuesta
+enviando comando a server2
+esperandorespuesta
+respuesta de server2: hola
+user@CC4303 ~ $
+respuesta de server1: hola
+user@CC4303 ~ $ enviando comando a server3
+
+esperandorespuesta
+respuesta de server3: hola
+user@CC4303 ~ $
+exit
+ingrese destinatarios: server2
+enviando comando a server2
+echo hola de nuevo
+ingrese destinatarios: all
+enviando comando a server1
+esperandorespuesta
+enviando comando a server3
+esperandorespuesta
+respuesta de server1: hola de nuevo
+user@CC4303 ~ $
+respuesta de server3: hola de nuevo
+user@CC4303 ~ $
+
