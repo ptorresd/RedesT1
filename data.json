@@ -1,13 +1,18 @@
 [
 	{
-		"nombre": "server1",
-		"dirección": "localhost",
-		"puerto": "8086"
+		"nombre": "pablito1",
+		"dirección": "192.168.1.102",
+		"puerto": "2030"
 	},
 	{
-		"nombre": "server2",
-		"dirección": "localhost",
-		"puerto": "1819"
+		"nombre": "pablito2",
+		"dirección": "192.168.1.102",
+		"puerto": "2031"
+	},
+	{
+		"nombre": "pablito3",
+		"dirección": "192.168.1.102",
+		"puerto": "2032"
 	}
 ]
 

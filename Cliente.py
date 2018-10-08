@@ -15,42 +15,44 @@ def parse_json(file):
     data = json.load(f)
 
     for s in data:
+        print('conectando a: ' + s["nombre"])
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((s["dirección"], int(s["puerto"])))
         sockets[s["nombre"]] = sock
-        print(sock.recv(4096))
+        print('conectado')
+        print(codecs.decode(sock.recv(4096)))
 
 
 ##funciones para procesar los comandos de consola
-def receive_command(comando):
-    c = comando.split(' ')
-    com = c[0]
+def receive_command(comando, destinatarios):
+    dest = destinatarios.split(' ')
 
-    if (c[1] == 'all'):
+    if (dest[0] == 'all'):
         for socket in sockets:
-            send_command(socket, com)
+            send_command(socket, comando)
         return
 
-    for i in range(1, len(c)):
-        send_command(c[i], com)
+    for i in range(len(dest)):
+        send_command(dest[i], comando)
 
 
 def send_command(server_name, command):
+    print('enviando comando a ' + server_name)
     sockets[server_name].send(bytes(command, 'utf-8'))
-    threading.Thread(target=wait_for_answer, args=[sockets[server_name]]).start()
+    if(command == 'exit'):
+        del sockets[server_name]
+        return
+    threading.Thread(target=wait_for_answer, args=[server_name]).start()
 
 
-def wait_for_answer(socket):
+def wait_for_answer(server_name):
+    socket = sockets[server_name]
     print('esperandorespuesta')
-    ans = socket.recv(4096)
-    print(ans)
-
-
-#    while(True):
-#       ans = socket.recv(4096)
-#      if(ans!=''):
-#         print(ans)
-#        return
+    while (True):
+        ans = codecs.decode(socket.recv(4096))
+        if (ans != ''):
+            print('respuesta de ' + server_name + ': ' + ans)
+        return
 
 
 ##MAIN EMPIEZA AQUI
@@ -61,12 +63,11 @@ if len(sys.argv) == 2:
 else:
     for i in range(1, len(sys.argv), 3):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.connect((sys.argv[i + 1], sys.argv[i + 2]))
+        sock.connect((sys.argv[i + 1], int(sys.argv[i + 2])))
         sockets[sys.argv[i]] = sock
-        sock.recv(4096)
-
-
+        print('asdasd')
 
 while True:
     command = input()
-    receive_command(command)
+    dest = input('ingrese destinatarios: ')
+    receive_command(command, dest)
