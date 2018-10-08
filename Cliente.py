@@ -20,7 +20,7 @@ def parse_json(file):
         sock.connect((s["dirección"], int(s["puerto"])))
         sockets[s["nombre"]] = sock
         print('conectado')
-        print(codecs.decode(sock.recv(4096)))
+        threading.Thread(target=wait_for_answer, args=[s["nombre"]]).start()
 
 
 ##funciones para procesar los comandos de consola
@@ -62,10 +62,12 @@ if len(sys.argv) == 2:
 
 else:
     for i in range(1, len(sys.argv), 3):
+        print('conectando a: ' + sys.argv[i])
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((sys.argv[i + 1], int(sys.argv[i + 2])))
         sockets[sys.argv[i]] = sock
-        print('asdasd')
+        threading.Thread(target=wait_for_answer, args=[sys.argv[i]]).start()
+        print('conectado')
 
 while True:
     command = input()
