@@ -1,18 +1,23 @@
 [
-	{
-		"nombre": "pablito1",
-		"dirección": "192.168.1.102",
-		"puerto": "2030"
-	},
-	{
-		"nombre": "pablito2",
-		"dirección": "192.168.1.102",
-		"puerto": "2031"
-	},
-	{
-		"nombre": "pablito3",
-		"dirección": "192.168.1.102",
-		"puerto": "2032"
-	}
+  {
+    "nombre": "pablito1",
+    "dirección": "192.168.1.102",
+    "puerto": "8000"
+  },
+  {
+    "nombre": "pablito2",
+    "dirección": "192.168.1.102",
+    "puerto": "8001"
+  },
+  {
+    "nombre": "pablito3",
+    "dirección": "192.168.1.102",
+    "puerto": "8002"
+  },
+  {
+    "nombre": "yo",
+    "dirección": "localhost",
+    "puerto": "8002"
+  }
 ]
 

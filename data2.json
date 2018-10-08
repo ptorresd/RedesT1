@@ -1,9 +1,18 @@
 [
-
-	{
-		"nombre": "server1",
-		"dirección": "localhost",
-		"puerto": "8085"
-	}
+  {
+    "nombre": "server1",
+    "dirección": "localhost",
+    "puerto": "3003"
+  },
+  {
+    "nombre": "server2",
+    "dirección": "localhost",
+    "puerto": "3001"
+  },
+  {
+    "nombre": "server3",
+    "dirección": "localhost",
+    "puerto": "3002"
+  }
 ]
 

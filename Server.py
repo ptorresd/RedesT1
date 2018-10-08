@@ -19,6 +19,7 @@ serversocket.listen(5)
 # nos quedamos esperando como buen server
 connection, address = serversocket.accept()
 print('conectado')
+connection.send(bytes('conectado', 'utf-8'))
 
 while True:
     # sacamos los datitos de la conexion entrante (objeto, direccion)
